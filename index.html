@@ -6,12 +6,12 @@
     <title>Minha Aplicação Mudada</title>
 </head>
 <body>
-    <ul id="minhaLista">
-        <li>nome</li>
+    <a href="./cadastro.html">Cadastrar Estudantes</a>
+    <h1>Lista de Estudantes</h1>
+    <ul id="minhalista">
     </ul>
 
     <script>
-        //Buscar dados que a API responde
         async function buscaDados(){
             const resposta = await fetch("http://localhost:8000/estudantes")
             //console.log(resposta)
@@ -25,7 +25,6 @@
                     const li = document.createElement("li")
                     li.innerText = obj.nome
                     ul.appendChild(li)
-                    
                 }
                 // vai passar por cada elemento dos dados
                 // vai criar um li pra cada dado
