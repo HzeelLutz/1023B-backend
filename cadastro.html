@@ -15,7 +15,7 @@
     <script>
         async function trataForm(){
             const idInput = document.getElementById("id")
-            const idNome = document.getElementById("id")
+            const idNome = document.getElementById("nome")
             const id = idInput.value
             const nome = idNome.value
 
@@ -33,15 +33,19 @@
                    body:JSON.stringify(objEstudante)
                 }) 
                 if (resposta.status === 404){
-                    alert("Estudante não foi excluído")
+                    alert("Estudante não excluído")
+                }
+                if (resposta.status === 400){
+                    const dados = await resposta.json()
+                    alert("Deu erro do lado do servidor - Erro: "+dados.mensagem)
                 } 
-                if (resposta === 200){
-                    alert("Estudante excluído com sucesso")
+                if (resposta.status === 200){
+                    alert("Estudante cadastrado com sucesso")
                 }
 
             }catch(erro){
                 console.log(erro)
-                alert("Deu algo errado na requisição do post!")
+                alert("Deu algo errado na requisição do post! \n Você ligou o o BACKEND com NPM RUN DEV?")
             }
         }
     </script>
